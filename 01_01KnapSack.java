@@ -1,3 +1,5 @@
+// https://practice.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1#
+
 class KnapSack {
 
     static int knapSack(int weight, int wt[], int val[], int n) // Basic Recursion
