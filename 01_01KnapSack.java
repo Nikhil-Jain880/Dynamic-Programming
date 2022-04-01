@@ -44,11 +44,12 @@ class KnapSack {
         if (n == 0 || weight == 0) {
             return 0;
         }
-        if (dp[weight][n - 1] != 0)
+        if (dp[weight][n - 1] != 0) // If the value is already calculated then dont recompute it just return the
+                                    // value
             return dp[weight][n - 1];
         if (wt[n - 1] <= weight) {
-            return dp[weight][n - 1] = Math.max(val[n - 1] + helper(weight - wt[n - 1], wt, val, n - 1),
-                    helper(weight, wt, val, n - 1));
+            return dp[weight][n - 1] = Math.max(val[n - 1] + helper(weight - wt[n - 1], wt, val, n - 1), // taking
+                    helper(weight, wt, val, n - 1)); // Not taking/skip
         } else
             return helper(weight, wt, val, n - 1);
     }
