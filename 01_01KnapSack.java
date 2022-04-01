@@ -34,10 +34,10 @@ class KnapSack {
     // value in the dp from the back
     // Function to return max value that can be put in knapsack of capacity W.
 
-    static int knapSackMemoization(int W, int wt[], int val[], int n) {
+    static int knapSackMemoization(int W, int wt[], int val[], int n) { // Fucntion to call helper Function
         dp = new int[n + 1][W + 1];
         int ans = helper(W, wt, val, n);
-        for (int[] i : dp) {
+        for (int[] i : dp) { // To Print the result Matrix
             System.out.println(Arrays.toString(i));
         }
         return ans;
@@ -50,11 +50,13 @@ class KnapSack {
         if (dp[n - 1][weight] != 0) // If the value is already calculated then dont recompute it just return the
                                     // value
             return dp[n - 1][weight];
-        if (wt[n - 1] <= weight) {
+        // curr item weight is less or equal to current capacity to hold then access if
+        if (wt[n - 1] <= weight) { // curr val + called(reduced weight, wt arr, val arr, one less index to
+                                   // calculate)
             return dp[n - 1][weight] = Math.max(val[n - 1] + helper(weight - wt[n - 1], wt, val, n - 1), // taking
                     helper(weight, wt, val, n - 1)); // Not taking/skip
         } else
-            return helper(weight, wt, val, n - 1);
+            return helper(weight, wt, val, n - 1); // current item weight > capacity -> skip this item || move on
     }
 
     // Top-Down - Tabulation
