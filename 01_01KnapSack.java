@@ -35,8 +35,11 @@ class KnapSack {
     // Function to return max value that can be put in knapsack of capacity W.
 
     static int knapSackMemoization(int W, int wt[], int val[], int n) {
-        dp = new int[W + 1][n + 1];
+        dp = new int[n + 1][W + 1];
         int ans = helper(W, wt, val, n);
+        for (int[] i : dp) {
+            System.out.println(Arrays.toString(i));
+        }
         return ans;
     }
 
@@ -44,31 +47,63 @@ class KnapSack {
         if (n == 0 || weight == 0) {
             return 0;
         }
-        if (dp[weight][n - 1] != 0) // If the value is already calculated then dont recompute it just return the
+        if (dp[n - 1][weight] != 0) // If the value is already calculated then dont recompute it just return the
                                     // value
-            return dp[weight][n - 1];
+            return dp[n - 1][weight];
         if (wt[n - 1] <= weight) {
-            return dp[weight][n - 1] = Math.max(val[n - 1] + helper(weight - wt[n - 1], wt, val, n - 1), // taking
+            return dp[n - 1][weight] = Math.max(val[n - 1] + helper(weight - wt[n - 1], wt, val, n - 1), // taking
                     helper(weight, wt, val, n - 1)); // Not taking/skip
         } else
             return helper(weight, wt, val, n - 1);
     }
 
-    // Main Method
-    public static void main(String[] args) {
-
-        int N = 3;
-        int W = 5;
-        int values[] = { 1, 2, 3 };
-        int weight[] = { 4, 5, 1 };
-
-        // int ans = knapSack(W, weight, values, N); // Recursion
-        int ansMemoization = knapSackMemoization(W, weight, values, N); // Memoization
-
+    // Top-Down - Tabulation
+    static int knapSackTabulation(int w, int wt[], int val[], int n) {
+        int[][] dp = new int[n + 1][w + 1];
+        /*
+         * Base Case - if n = 0 || w == 0 the ans is 0 we dont need to mention that
+         * because default vale of our d array is 0
+         * That's why we start our loop from 1 instead of 0 so while doing i-1 or j-1 it
+         * doesnot get thrown off
+         * n =0 means there are no item to begin with so if there is no item to carry so
+         * the val will also be 0, w =0 means
+         * our bag capacity is zero so we cant carry anything so the ans is zero in that
+         * case
+         */
+        for (int i = 1; i < n + 1; i++) {
+            for (int j = 1; j < w + 1; j++) {
+                if (wt[i - 1] <= j) { // REMBER : j is the current weight in the 2d array. only when j >= weight of
+                                      // the
+                                      // current object this if will execute
+                    dp[i][j] = Math.max(val[i - 1] + dp[i - 1][j - wt[i - 1]], dp[i - 1][j]); // including and not
+                                                                                              // including
+                } else // [weight - weight[n-1]]
+                    dp[i][j] = dp[i - 1][j]; // required weight(weight of current object) is greater than current
+                                             // capacity
+                                             // dont add, skip it
+            }
+        }
         for (int[] i : dp) {
             System.out.println(Arrays.toString(i));
         }
+        return dp[n][w];
+    }
+
+    // Main Method
+    public static void main(String[] args) {
+
+        int N = 4;
+        int W = 7;
+        int values[] = { 1, 4, 5, 7 };
+        int weight[] = { 1, 3, 4, 5 };
+
+        // int ans = knapSack(W, weight, values, N); // Recursion
+        // int ansMemoization = knapSackMemoization(W, weight, values, N); //
+        // Memoization
+        int ansTabulation = knapSackTabulation(W, weight, values, N);
+
         // System.out.println(ans);
-        System.out.println(ansMemoization);
+        // System.out.println(ansMemoization);
+        System.out.println(ansTabulation);
     }
 }
