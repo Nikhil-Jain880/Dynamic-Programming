@@ -1,4 +1,5 @@
 import java.util.Arrays;
+// same as 02_subset sum problem or comments check that one
 
 // https://practice.geeksforgeeks.org/problems/perfect-sum-problem5633/1#
 
@@ -67,13 +68,13 @@ class PerfectSum {
 
         for (int i = 1; i <= N; i++) {
             for (int j = 0; j <= sum; j++) {
-                if (arr[i - 1] <= j) { // in case form boolean values max dont work so we use OR ||
+                if (arr[i - 1] <= j) {
                     dp[i][j] = (dp[i - 1][j]) % mod + (dp[i - 1][j - arr[i - 1]]) % mod;
                 } else
                     dp[i][j] = (dp[i - 1][j]) % mod;
             }
         }
-        // for (boolean[] i : dp) { // To Print the result Matrix
+        // for (int[] i : dp) { // To Print the result Matrix
         // System.out.println(Arrays.toString(i));
         // }
         return (dp[N][sum]) % mod;
