@@ -51,10 +51,29 @@ class HouseRobber {
         return dp[n - 1];
     }
 
+    // Space Optimized
+    public static int Optimized(int[] nums) {
+        int n = nums.length;
+        if (n == 1)
+            return nums[0];
+
+        int secondPrevious = nums[0];
+        int previous = Math.max(nums[1], nums[0]);
+        int curri = previous;
+        for (int i = 2; i < n; i++) {
+            curri = Math.max(previous, secondPrevious + nums[i]);
+            secondPrevious = previous;
+            previous = curri;
+
+        }
+        return curri;
+    }
+
     // Main
     public static void main(String[] args) {
         int[] nums = { 2, 7, 9, 3, 1 };
-        System.out.println(memoization(nums));
-        System.out.println(Tabulation(nums));
+        // System.out.println(memoization(nums));
+        // System.out.println(Tabulation(nums));
+        System.out.println(Optimized(nums));
     }
 }
