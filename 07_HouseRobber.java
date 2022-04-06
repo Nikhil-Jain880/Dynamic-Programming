@@ -51,12 +51,14 @@ class HouseRobber {
         return dp[n - 1];
     }
 
-    // Space Optimized
+    // Space Optimized Space Compleity: O(1)
+    // Time Complexity: O(N)
     public static int Optimized(int[] nums) {
         int n = nums.length;
         if (n == 1)
             return nums[0];
-
+        // Actually we only needed last and second last value so, dp array can be
+        // removed and two new variables cam be declared
         int secondPrevious = nums[0];
         int previous = Math.max(nums[1], nums[0]);
         int curri = previous;
