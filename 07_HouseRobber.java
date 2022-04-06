@@ -51,7 +51,8 @@ class HouseRobber {
         return dp[n - 1];
     }
 
-    // Space Optimized Space Compleity: O(1)
+    // Space Optimized
+    // Space Compleity: O(1)
     // Time Complexity: O(N)
     public static int Optimized(int[] nums) {
         int n = nums.length;
