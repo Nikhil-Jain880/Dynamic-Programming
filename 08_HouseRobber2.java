@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/house-robber-ii/
-// One new clause is added to the question which is imagine the array as a circular array i.e. !st and the last element are neighbours
+// One new clause is added to the question which is imagine the array as a 
+// circular array i.e. !st and the last element are neighbours
+
 class HouseRobber2 {
 
     int rob(int[] nums) {
@@ -9,16 +11,16 @@ class HouseRobber2 {
         int arr2[] = new int[nums.length - 1];
         int arr1ind = 0;
         int arr2ind = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (i != 0) {
+        for (int i = 0; i < nums.length; i++) { // Create 2 arrays
+            if (i != 0) { // one dont have the 1st element
                 arr1[arr1ind] = nums[i];
                 arr1ind++;
             }
-            if (i != nums.length - 1) {
+            if (i != nums.length - 1) { // And the other does not have the last element
                 arr2[arr2ind] = nums[i];
                 arr2ind++;
             }
-        }
+        } // Pass both of them and return the one giving more money than another
         return Math.max(Optimized(arr1), Optimized(arr2));
     }
 
