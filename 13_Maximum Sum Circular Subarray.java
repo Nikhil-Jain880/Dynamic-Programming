@@ -7,13 +7,13 @@ class Maximum_Sum_Circular_Subarray {
         int maxSub = Integer.MIN_VALUE;
         int tempMax = 0;
 
-        int sum = 0;
+        int Running_Sum = 0;
 
         int minSub = Integer.MAX_VALUE;
         int tempMin = 0;
 
         for (int val : nums) {
-            sum += val;
+            Running_Sum += val;
 
             tempMax += val;
             maxSub = Math.max(maxSub, tempMax);
@@ -24,9 +24,9 @@ class Maximum_Sum_Circular_Subarray {
             tempMin = Math.min(tempMin, 0);
         }
 
-        if (sum == minSub)
+        if (Running_Sum == minSub)
             return maxSub;
-        return Math.max(maxSub, (sum - minSub));
+        return Math.max(maxSub, (Running_Sum - minSub));
     }
 
     public static void main(String[] args) {
