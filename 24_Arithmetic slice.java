@@ -10,7 +10,7 @@ class Arithmetic_slice {
         
         for(int i =2; i<nums.length;i++)
         {
-            if(nums[i-1] - nums[i] == gap)
+            if(nums[i-1] - nums[i] == gap) // count running AP
             {
                 counter++;
             }
@@ -19,7 +19,9 @@ class Arithmetic_slice {
                 gap = nums[i-1] - nums[i];
                 counter =0;
             }
-            result += counter;
+            result += counter; // for every +1 the number of AP's also increases to counter
+            // if there is 1-2-3 the possibility is 1 for 1-2-3s-4 it becomes 3 [123, 234, 1234]
+            //               1    from this       and     2 from this so 1+2 = 3
         }
 
         
