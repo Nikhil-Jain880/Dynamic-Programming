@@ -23,7 +23,7 @@ class HouseRobber {
             return dp[n];
 
         int nTake = helper(nums, n - 1, i); // not including this one so I can include the next one so n-1
-        int take = 0; // not sure it will be calculated because of if condition so initializing it
+        int take = 0; // not sure it will be calculated because of, if condition, so initializing it
                       // with a value
 
         if (i - n > 1)

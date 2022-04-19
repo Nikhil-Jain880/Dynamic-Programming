@@ -64,9 +64,9 @@ class KnapSack {
         int[][] dp = new int[n + 1][w + 1];
         /*
          * Base Case - if n = 0 || w == 0 the ans is 0 we dont need to mention that
-         * because default vale of our d array is 0
+         * because default value of our d array is 0
          * That's why we start our loop from 1 instead of 0 so while doing i-1 or j-1 it
-         * doesnot get thrown off
+         * does not get thrown off
          * n =0 means there are no item to begin with so if there is no item to carry so
          * the val will also be 0, w =0 means
          * our bag capacity is zero so we cant carry anything so the ans is zero in that
@@ -94,8 +94,8 @@ class KnapSack {
     // Main Method
     public static void main(String[] args) {
 
-        int N = 4;
-        int W = 7;
+        int N = 4; // Length of the array
+        int W = 7; // Total weight capactity
         int values[] = { 1, 4, 5, 7 };
         int weight[] = { 1, 3, 4, 5 };
 

@@ -78,7 +78,7 @@ class MinimumSumPArtition {
         int n = 4;
         int arr[] = { 1, 6, 11, 5 };
 
-        // System.out.println(backtracking(arr, n));
-        System.out.println(minDifference(arr, n));
+        System.out.println(backtracking(arr, n));
+        // System.out.println(minDifference(arr, n));
     }
 }

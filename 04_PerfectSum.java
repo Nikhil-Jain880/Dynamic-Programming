@@ -1,5 +1,5 @@
 import java.util.Arrays;
-// same as 02_subset sum problem or comments check that one
+// same as 02_subset sum problem for comments check that one
 
 // https://practice.geeksforgeeks.org/problems/perfect-sum-problem5633/1#
 

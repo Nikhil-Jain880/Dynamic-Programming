@@ -81,7 +81,7 @@ class SubsetSum {
      * arr[i - 1]]
      * "dp[i - 1][j - arr[i - 1]]" this later half:
      * we are considering this value to take.
-     * as we are calculation is one by one in a linear fashion so for a give index
+     * as we are calculating one by one in a linear fashion, so for a give index
      * i, j
      * all the values from 0,0 to i,j-1 has already been calculated, (in the just
      * before line we have
