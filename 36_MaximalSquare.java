@@ -80,10 +80,44 @@ class MaximalSquare {
         
     }
 
+    // Tabulation
+    private static int Tabulation(char[][] matrix) {
+        int row = matrix.length;
+        int col = matrix[0].length;
+        int[][] dp = new int[row][col];
+        int maxSquare =0;
+        
+        
+        for(int i =0;i<row;i++)
+        {
+            for(int j=0;j<col;j++)
+            {
+                if(i == 0 || j == 0) dp[i][j] = matrix[i][j] - '0';
+                else if(matrix[i][j] == '0') dp[i][j] = 0;
+                else
+                {
+                    
+                    int min = Math.min(dp[i-1][j], dp[i][j-1]);
+                    int finalMin = Math.min(min, dp[i-1][j-1]);
+                    dp[i][j] = 1 + finalMin;
+                }
+                maxSquare = Math.max(maxSquare, dp[i][j] * dp[i][j]);
+            }
+        }
+        
+//         for(int[] rows : dp)
+//         {
+//             System.out.println(Arrays.toString(rows));
+//         }
+        
+        return maxSquare;
+    }
+
     public static void main(String[] args) {
         char[][] matrix = {{'1','0','1','0','0'},{'1','0','1','1','1'},{'1','1','1','1','1'},{'1','0','0','1','0'}};
         int backtacking = maximalSquare(matrix);
         System.out.println(backtacking);
+        System.out.println(Tabulation(matrix));
     }
     
 }
